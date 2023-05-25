@@ -33,34 +33,29 @@ const supported_hook = [
 ];
 
 export const add = async (): Promise<void> => {
-  return new Promise(async (resolve, reject): Promise<void> => {
-    // select the interested webhooks
-    const hooks = (
-      await ask({
-        type: "multiselect",
-        name: "hooks",
-        message: "Choose one or more hooks",
-        instructions: false,
-        choices: supported_hook.map((hook) => ({ title: hook, value: hook })),
-      })
-    ).hooks;
-    console.log("RES", hooks);
+  // select the interested webhooks
+  const hooks = (
+    await ask({
+      type: "multiselect",
+      name: "hooks",
+      message: "Choose one or more hooks",
+      instructions: false,
+      choices: supported_hook.map((hook) => ({ title: hook, value: hook })),
+    })
+  ).hooks;
 
-    // copy corresponding hooks template
-    hooks.forEach((hook: string) => {
-      // caller ( sh file )
-      fs.cpSync(
-        __dirname + `/../../templates/caller/${hook}`,
-        `./.cosmokeeper/${hook}`
-      );
-      controlledSpawn("chmod", ["u+x", `./.cosmokeeper/${hook}`]);
-      // bin ( js file )
-      fs.cpSync(
-        __dirname + `/../../templates/bin/${hook}.ts`,
-        `./.cosmokeeper/bin/${hook}.ts`
-      );
-    });
-
-    resolve();
+  // copy corresponding hooks template
+  hooks.forEach((hook: string) => {
+    // caller ( sh file )
+    fs.cpSync(
+      __dirname + `/../../templates/caller/${hook}`,
+      `./.cosmokeeper/${hook}`
+    );
+    controlledSpawn("chmod", ["u+x", `./.cosmokeeper/${hook}`]);
+    // bin ( js file )
+    fs.cpSync(
+      __dirname + `/../../templates/bin/${hook}.ts`,
+      `./.cosmokeeper/bin/${hook}.ts`
+    );
   });
 };
