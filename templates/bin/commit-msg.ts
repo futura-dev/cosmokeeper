@@ -154,6 +154,7 @@ const run = async () => {
   const TO_LINT = STAGED_FILES.filter((file) =>
     new RegExp(`${config.lint.matches}`).test(file)
   );
+
   if (config.lint.eslintb && TO_LINT.length > 0)
     controlledSpawn("npx", ["eslint", ...TO_LINT, "--fix"]);
 

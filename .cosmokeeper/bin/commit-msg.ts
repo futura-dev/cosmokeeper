@@ -154,10 +154,11 @@ const run = async () => {
   const TO_LINT = STAGED_FILES.filter((file) =>
     new RegExp(`${config.lint.matches}`).test(file)
   );
-  if (config.lint.eslint)
+
+  if (config.lint.eslintb && TO_LINT.length > 0)
     controlledSpawn("npx", ["eslint", ...TO_LINT, "--fix"]);
 
-  if (config.lint.prettier)
+  if (config.lint.prettier && TO_LINT.length > 0)
     controlledSpawn("npx", ["prettier", ...TO_LINT, "--write"]);
 
   process.exit(0);
