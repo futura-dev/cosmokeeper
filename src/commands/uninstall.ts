@@ -8,7 +8,7 @@ export const uninstall = async (): Promise<void> => {
       name: "does_uninstall",
       message: "are you sure to uninstall cosmokeeper ?",
       active: "yes",
-      inactive: "no",
+      inactive: "no"
     })
   ).does_uninstall;
   if (!does_uninstall) process.exit(0);
@@ -19,7 +19,7 @@ export const uninstall = async (): Promise<void> => {
     "--unset",
     "--local",
     "core.hooksPath",
-    "./cosmokeeper",
+    "./cosmokeeper"
   ]);
 
   // return

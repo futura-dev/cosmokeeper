@@ -1,8 +1,6 @@
 import { spawnSync } from "child_process";
 import { ParamsOf } from "./types";
 import prompts from "prompts";
-import * as querystring from "querystring";
-import { read } from "fs";
 
 /**
  * controlledSpawn
@@ -22,14 +20,6 @@ export const controlledSpawn = (...params: ParamsOf<typeof spawnSync>) => {
 };
 
 /**
- * isArray
- * @param source
- */
-export const isArray = (source: any): source is Array<any> => {
-  return Array.isArray(source);
-};
-
-/**
  * ask
  * @param questions
  * @param options
@@ -40,8 +30,8 @@ export const ask = async <T extends string = string>(
 ): Promise<prompts.Answers<T>> => {
   return prompts(questions, {
     ...options,
-    onCancel: (...args) => {
+    onCancel: () => {
       process.exit(0);
-    },
+    }
   });
 };

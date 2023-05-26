@@ -8,7 +8,7 @@ const supported_hook = [
   // 'pre-commit',
   // 'pre-merge-commit',
   // 'prepare-commit-msg',
-  "commit-msg",
+  "commit-msg"
   // 'post-commit',
   // 'pre-rebase',
   // 'post-checkout',
@@ -40,7 +40,7 @@ export const add = async (): Promise<void> => {
       name: "hooks",
       message: "Choose one or more hooks",
       instructions: false,
-      choices: supported_hook.map((hook) => ({ title: hook, value: hook })),
+      choices: supported_hook.map(hook => ({ title: hook, value: hook }))
     })
   ).hooks;
 

@@ -14,7 +14,7 @@ export const init = async (): Promise<void> => {
         message:
           ".cosmokeeper configuration file already exists, do you want to override it ?",
         active: "yes",
-        inactive: "no",
+        inactive: "no"
       })
     ).does_override;
   }
@@ -28,11 +28,11 @@ export const init = async (): Promise<void> => {
           lint: {
             eslint: true,
             prettier: true,
-            matches: "(.ts)$",
+            matches: "(.ts)$"
           },
           patterns: {
-            branch: "/(w+/w+|main|master)/g",
-          },
+            branch: "/(w+/w+|main|master)/g"
+          }
           // eslint-disable-next-line comma-dangle
         },
         null,
@@ -50,7 +50,7 @@ export const init = async (): Promise<void> => {
     "config",
     "--local",
     "core.hooksPath",
-    ".cosmokeeper",
+    ".cosmokeeper"
   ]);
   console.log("core.hooksPath was succesfully set with '.cosmokeep'");
 
