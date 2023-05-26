@@ -120,19 +120,19 @@ const run = async () => {
         packages.find((pkg) =>
           new RegExp(`${normalizePath(pkg)}`).test(normalizePath(file))
         ) ?? "root";
-      if (visited_packages.has(pkg)) {
-        // ask
-        console.log("Warning: Modified files found in multiple packages.");
-        const input = await question(
-          "Do you want to allow this commit? (y/N):"
-        );
-        if (input.toLowerCase() !== "y") {
-          console.error("execution stopped");
-          process.exit(1);
-        }
-        break;
-      }
       visited_packages.add(pkg);
+    }
+
+    if (visited_packages.size > 1) {
+      // ask
+      console.log("Warning: Modified files found in multiple packages.");
+      const input = await question(
+        "Do you want to allow this commit? (y/N):"
+      );
+      if (input.toLowerCase() !== "y") {
+        console.error("execution stopped");
+        process.exit(1);
+      }
     }
   } else {
     // Check if the branch name matches the configured patters
