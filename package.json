@@ -15,7 +15,7 @@
   "homepage": "https://github.com/futura-dev/cosmokeeper",
   "license": "MIT",
   "files": [
-    "/bin",
+    "/templates",
     "/dist"
   ],
   "bin": {
