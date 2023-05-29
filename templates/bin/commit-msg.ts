@@ -1,7 +1,14 @@
 import * as fs from "fs";
-import { ParamsOf } from "../../src/utils/types";
 import { spawnSync } from "child_process";
 import * as rl from "readline";
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type ParamsOf<T extends (...params: readonly any[]) => any> = T extends (
+  ...params: infer P
+) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
+any
+  ? P
+  : never;
 
 const question = (q: string): Promise<string> => {
   return new Promise<string>((resolve, reject) => {
