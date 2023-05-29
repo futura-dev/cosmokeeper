@@ -23,8 +23,8 @@
     "@futura-dev/cosmokeeper": "dist/cli.js"
   },
   "scripts": {
-    "build": "npx @futura-dev/cosmofactory build",
-    "release": "npx @futura-dev/cosmodrome release",
+    "build": "cosmofactory build",
+    "release": "cosmodrome release",
     "lint": "eslint ./src --ext .ts",
     "lint:fix": "npm run lint -- --fix",
     "lint:beautify": "npm run lint:fix && prettier ./src --write"
