@@ -1,6 +1,6 @@
 {
   "name": "@futura-dev/cosmokeeper",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": false,
   "prettier": "@futura-dev/eslint-config-typescript/.prettierrc.js",
   "repository": {
