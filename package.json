@@ -42,7 +42,7 @@
     "@futura-dev/contributing-gen": "^2.0.14",
     "@futura-dev/cosmodrome": "^1.2.0",
     "@futura-dev/cosmofactory": "^0.2.0",
-    "@futura-dev/eslint-config-typescript": "^0.1.2",
+    "@futura-dev/eslint-config-typescript": "^0.1.3",
     "@types/commander": "^2.12.2",
     "@types/mute-stream": "^0.0.1",
     "@types/node": "^16.18.29",

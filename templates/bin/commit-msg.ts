@@ -69,7 +69,8 @@ const run = async () => {
   const STAGED_FILES = controlledSpawn("git", [
     "diff",
     "--cached",
-    "--name-only"
+    "--name-only",
+    "--diff-filter=ACMRTUXB" // take all file without deleted ( D )
   ]).split(/(\s|\n|\r|\r\n)/);
 
   // MONOREPO
