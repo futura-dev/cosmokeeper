@@ -5,6 +5,6 @@
     "matches": "(.ts)$"
   },
   "patterns": {
-    "branch": "/(w+/w+)/g"
+    "branch": "/main/g"
   }
 }
