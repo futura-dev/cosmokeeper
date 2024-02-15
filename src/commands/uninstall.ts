@@ -18,8 +18,7 @@ export const uninstall = async (): Promise<void> => {
     "config",
     "--unset",
     "--local",
-    "core.hooksPath",
-    "./cosmokeeper"
+    "core.hookspath",
   ]);
 
   // return
