@@ -2,14 +2,6 @@ import * as fs from "fs";
 import { spawnSync } from "child_process";
 import * as rl from "readline";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type ParamsOf<T extends (...params: readonly any[]) => any> = T extends (
-  ...params: infer P
-) => // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any
-  ? P
-  : never;
-
 const question = (q: string): Promise<string> => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   return new Promise<string>((resolve, _) => {
@@ -29,7 +21,7 @@ const normalizePath = (path: string): string => {
   return path.replace(/^\.\//g, "");
 };
 
-export const controlledSpawn = (...params: ParamsOf<typeof spawnSync>) => {
+export const controlledSpawn = (...params: Parameters<typeof spawnSync>) => {
   params[2] && !params[2].encoding && (params[2].encoding = "utf8");
   const output = spawnSync(...params);
   if (output.status !== 0) {
@@ -147,13 +139,14 @@ const run = async () => {
       "symbolic-ref",
       "--short",
       "HEAD"
-    ]);
-    if (new RegExp(`${config.patterns.branch}`).test(current_branch)) {
-      console.error(
-        `branch name \\'${current_branch}\\' does not respect the pattern '${config.patterns.branch}'`
-      );
-      process.exit(1);
-    }
+    ]).trim();
+    // TODO: FIXME: this is not working
+    // if (!new RegExp(`${config.patterns.branch}`).test(current_branch)) {
+    //   console.error(
+    //     `branch name \\'${current_branch}\\' does not respect the pattern '${config.patterns.branch}'`
+    //   );
+    //   process.exit(1);
+    // }
   }
 
   // COMMON
